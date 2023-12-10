@@ -1,0 +1,5 @@
+@use './font' as var;
+
+body {
+  font-family: var.$ff-noto-sans-jp;
+}
