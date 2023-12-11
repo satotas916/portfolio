@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-function Btn(props: { text: string; url: string; }) {
+function Button(props: { text: string; url: string; }) {
 
   // style
-  const Btn = styled.a`
+  const Button = styled.a`
     position: relative;
     display: inline-block;
     padding: 0 10px;
@@ -36,10 +36,10 @@ function Btn(props: { text: string; url: string; }) {
   `
 
   return (
-    <Btn href={props.url}>
+    <Button href={props.url}>
       {props.text}
-    </Btn>
+    </Button>
   )
 }
 
-export default Btn
+export default Button
