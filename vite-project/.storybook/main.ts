@@ -1,7 +1,7 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+import path from "path";
+import { loadConfigFromFile, mergeConfig } from "vite";
 
-const path: any = await import("path");
-const { loadConfigFromFile, mergeConfig } = await import("vite");
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
@@ -19,6 +19,7 @@ const config: StorybookConfig = {
   },
   async viteFinal(config, { configType }) {
     const { config: userConfig }: any = await loadConfigFromFile(
+      // @ts-ignore
       path.resolve(__dirname, "../vite.config.ts")
     );
 
