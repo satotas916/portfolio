@@ -1,12 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './assets/scss/common.scss'
-import Title from './components/title/Title.tsx'
 import Button from './components/button/Button.tsx'
 import Footer from './features/footer/Footer.tsx'
 import ProjectCard from './components/project-card/ProjectCard.tsx'
+import AboutContact from './features/about-contact/AboutContact.tsx'
 
-const title = { title:'Project', icon: 'terminal' }
 const moreBtn = { text:'一覧を見る', url: '#' }
 const projectCard = {
   url: '#',
@@ -20,9 +19,9 @@ const projectCard = {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Title {...title} />
     <Button {...moreBtn} />
     <ProjectCard {...projectCard} />
+    <AboutContact />
     <Footer />
   </React.StrictMode>,
 )
