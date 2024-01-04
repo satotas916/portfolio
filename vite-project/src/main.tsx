@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './assets/scss/common.scss'
 import Title from './components/title/Title.tsx'
 import Button from './components/button/Button.tsx'
-import Footer from './project/footer/Footer.tsx'
+import Footer from './features/footer/Footer.tsx'
 import ProjectCard from './components/project-card/ProjectCard.tsx'
 
 const title = { title:'Project', icon: 'terminal' }
