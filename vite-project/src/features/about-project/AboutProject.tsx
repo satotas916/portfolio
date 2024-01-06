@@ -66,8 +66,6 @@ const List = styled.div`
     }
   }
 `
-const Item = styled.div`
-`
 const navigation = styled.button`
   position: absolute;
   top: 50%;
@@ -92,7 +90,7 @@ const ButtonWrap = styled.div`
 `
 
 const listItems = projects.map((val, index) =>
-  <SwiperSlide key={index}><Item><ProjectCard {...val} /></Item></SwiperSlide>
+  <SwiperSlide key={index}><ProjectCard {...val} /></SwiperSlide>
 );
 
 function AboutProject() {
