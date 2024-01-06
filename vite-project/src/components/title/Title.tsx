@@ -33,6 +33,11 @@ const TextWrap = styled.div<{ size: string }>`
     z-index: -1;
   }
 `
+const Text = styled.h2<{ size: string }>`
+  display: inline-flex;
+  align-items: center;
+  font-size: ${props => props.size === 'm' ? '64px' : '80px'};
+`
 const Icon = styled.span<{ size: string }>`
   margin-right: 16px;
   font-size: ${props => props.size === 'm' ? '64px' : '80px'};
@@ -41,16 +46,11 @@ const Icon = styled.span<{ size: string }>`
 function Title(props: { title: string; size?: string; tag?: string; lead?: string; icon?: string }) {
   const tagElement = props.tag ? props.tag as ElementType : 'h2'
   const size = props.size ? props.size : 'm'
-  const Text = styled(tagElement)<{ size: string }>`
-    display: inline-flex;
-    align-items: center;
-    font-size: ${props => props.size === 'm' ? '64px' : '80px'};
-  `
   return (
     <Container>
       {props.lead && <Lead size ={size}>{props.lead}</Lead>}
       <TextWrap size={size}>
-        <Text size={size}>
+        <Text as={tagElement} size={size}>
           {props.icon && <Icon className="material-symbols-outlined" size ={size}>{props.icon}</Icon>}
           {props.title}
         </Text>
