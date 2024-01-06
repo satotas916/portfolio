@@ -56,14 +56,6 @@ const List = styled.div`
     width: 918px;
     margin: 0 auto;
     padding: 0 0 6px;
-    overflow: visible;
-  }
-  .swiper-slide {
-    opacity: 0.5;
-    transition: opacity 0.2s ease;
-    &.swiper-slide-active {
-      opacity: 1;
-    }
   }
 `
 const navigation = styled.button`
@@ -72,6 +64,7 @@ const navigation = styled.button`
   transform: translateY(-50%);
   font-size: 80px;
   color: #1c1b1f;
+  font-weight: 200;
   z-index: 100;
   transition: opacity 0.2s ease;
   &:disabled {
