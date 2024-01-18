@@ -16,7 +16,7 @@ const moreBtn = { text:'一覧を見る', url: '#' }
 
 // style
 const Container = styled.div`
-  width: 1126px;
+  width: 980px;
   margin: 0 auto;
 `
 const List = styled.ul`
@@ -26,7 +26,7 @@ const List = styled.ul`
   }
 `
 const ButtonWrap = styled.div`
-  margin-top: 30px;
+  margin-top: 40px;
   text-align: right;
 `
 

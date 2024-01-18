@@ -9,11 +9,11 @@ const title = { title:'Skill', icon: 'frame_person' }
 
 // style
 const Container = styled.div`
-  width: 1126px;
+  width: 980px;
   margin: 0 auto;
 `
 const Skill = styled.div`
-  width: 918px;
+  width: 820px;
   margin: 45px auto 0;
 `
 

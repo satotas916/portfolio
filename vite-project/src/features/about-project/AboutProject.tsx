@@ -46,23 +46,23 @@ const moreBtn = { text:'一覧を見る', url: '#' }
 
 // style
 const Container = styled.div`
-  width: 1126px;
+  width: 980px;
   margin: 0 auto;
 `
 const List = styled.div`
   position: relative;
   margin-top: 45px;
   .swiper {
-    width: 918px;
+    width: 820px;
     margin: 0 auto;
-    padding: 0 0 6px;
+    padding: 0 12px 12px 0;
   }
 `
 const navigation = styled.button`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 80px;
+  font-size: 64px;
   color: #1c1b1f;
   font-weight: 200;
   z-index: 100;
@@ -78,7 +78,7 @@ const Prev = styled(navigation)`
   left: 0;
 `
 const ButtonWrap = styled.div`
-  margin-top: 30px;
+  margin-top: 40px;
   text-align: right;
 `
 

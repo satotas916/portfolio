@@ -36,11 +36,11 @@ const TextWrap = styled.div<{ size: string }>`
 const Text = styled.h2<{ size: string }>`
   display: inline-flex;
   align-items: center;
-  font-size: ${props => props.size === 'm' ? '64px' : '80px'};
+  font-size: ${props => props.size === 'm' ? '48px' : '80px'};
 `
 const Icon = styled.span<{ size: string }>`
   margin-right: 16px;
-  font-size: ${props => props.size === 'm' ? '64px' : '80px'};
+  font-size: ${props => props.size === 'm' ? '48px' : '80px'};
 `
 
 function Title(props: { title: string; size?: string; tag?: string; lead?: string; icon?: string }) {

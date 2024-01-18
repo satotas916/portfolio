@@ -3,10 +3,9 @@ import styled from "styled-components";
 // style
 const Container = styled.a`
   display: flex;
-  width: 912px;
+  max-width: 912px;
   background: #fff;
-  border-radius: 20px;
-  box-shadow: 6px 6px 0 0 #4dac6e;
+  box-shadow: 12px 12px 0 0 #4dac6e;
   text-decoration: none;
   overflow: hidden;
 `

@@ -37,7 +37,7 @@ const Emphasis = styled.span`
 const Icon = styled.span`
   display: inline-block;
   margin-top: 16px;
-  font-size: 90px;
+  font-size: 80px;
   color: #4dac6e;
 `
 

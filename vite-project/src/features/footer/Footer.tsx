@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Container = styled.div`
   padding: 20px 0;
   text-align: center;
-  font-size: 28px;
+  font-size: 20px;
   line-height: 1.46;
   font-weight: bold;
   color: #fffcbd;

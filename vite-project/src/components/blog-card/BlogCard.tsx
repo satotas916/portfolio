@@ -5,14 +5,13 @@ const Container = styled.a`
   display: block;
   padding: 20px 40px;
   background: #fff;
-  border-radius: 20px;
-  box-shadow: 6px 6px 0 0 #4dac6e;
+  box-shadow: 12px 12px 0 0 #4dac6e;
   text-decoration: none;
 `
 const Date = styled.span`
   display: block;
-  margin-bottom: 14px;
-  font-size: 24px;
+  margin-bottom: 8px;
+  font-size: 18px;
   line-height: 1.46;
   color: #4dac6e;
   font-family: 'Dela Gothic One', sans-serif;
