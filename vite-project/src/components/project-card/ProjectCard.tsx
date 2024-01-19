@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import { theme } from "../../setting/style/common";
 
 // style
 const Container = styled.a`
   display: flex;
   max-width: 912px;
   background: #fff;
-  box-shadow: 12px 12px 0 0 #4dac6e;
+  box-shadow: 12px 12px 0 0 ${theme.colors.base};
   text-decoration: none;
   overflow: hidden;
 `
@@ -29,14 +30,14 @@ const Title = styled.h3`
   font-size: 24px;
   line-height: 1.46;
   font-weight: bold;
-  color: #000;
-  background: linear-gradient(transparent 60%, #4dac6e 0%);
+  color: ${theme.colors.black};
+  background: linear-gradient(transparent 60%, ${theme.colors.base} 0%);
 `
 const Text = styled.div`
   margin-top: 24px;
   font-size: 16px;
   line-height: 1.43;
-  color: #000;
+  color: ${theme.colors.black};
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -46,7 +47,7 @@ const Details = styled.div`
   margin-top: 24px;
   font-size: 16px;
   line-height: 1.43;
-  color: #000;
+  color: ${theme.colors.black};
   span {
     display: block;
   }

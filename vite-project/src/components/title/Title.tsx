@@ -1,5 +1,6 @@
 import { ElementType } from "react";
 import styled from "styled-components";
+import { theme } from "../../setting/style/common";
 
 // style
 const Container = styled.div`
@@ -10,16 +11,16 @@ const Lead = styled.span<{ size: string }>`
   display: block;
   margin: ${props => props.size === 'm' ? '0 20px' : '0 30px'};
   font-size: 32px;
-  color: #000;
-  font-family: 'Dela Gothic One', sans-serif;
+  color: ${theme.colors.black};
+  font-family: ${theme.fonts.DelaGothicOne};
   font-weight: bold;
 `
 const TextWrap = styled.div<{ size: string }>`
   display: inline-block;
   position: relative;
   padding: ${props => props.size === 'm' ? '0 20px' : '0 30px'};
-  color: #000;
-  font-family: 'Dela Gothic One', sans-serif;
+  color: ${theme.colors.black};
+  font-family: ${theme.fonts.DelaGothicOne};
   font-weight: bold;
   &::before {
     position: absolute;
@@ -29,7 +30,7 @@ const TextWrap = styled.div<{ size: string }>`
     content: '';
     width: 100%;
     height: 34px;
-    background: #4dac6e;
+    background: ${theme.colors.base};
     z-index: -1;
   }
 `

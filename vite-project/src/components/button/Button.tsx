@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../setting/style/common";
 
 // style
 const Container = styled.a`
@@ -7,9 +8,8 @@ const Container = styled.a`
   padding: 0 10px;
   font-size: 32px;
   line-height: 1.44;
-  color: #000;
+  color: ${theme.colors.black};
   font-weight: bold;
-  font-family: 'Noto Sans JP', sans-serif;
   text-decoration: none;
   &::before {
     content: '';
@@ -19,7 +19,7 @@ const Container = styled.a`
     bottom: 0;
     width: 100%;
     height: 16px;
-    background: #4dac6e;
+    background: ${theme.colors.base};
     z-index: -1;
     transform: scale(0, 1);
     transform-origin: right top;

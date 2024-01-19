@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../setting/style/common";
 import Title from "../../components/title/Title";
 
 const title = { title:'Contact' }
@@ -13,7 +14,7 @@ const Emphasis = styled.span`
   width: 4px;
   height: 36px;
   margin: 70px auto 0;
-  background: #4dac6e;
+  background: ${theme.colors.base};
   border-radius: 10px;
   &::before,
   &::after {
@@ -22,7 +23,7 @@ const Emphasis = styled.span`
     display: block;
     width: 4px;
     height: 40px;
-    background: #4dac6e;
+    background: ${theme.colors.base};
     border-radius: 10px;
   }
   &::before {
@@ -38,7 +39,7 @@ const Icon = styled.span`
   display: inline-block;
   margin-top: 16px;
   font-size: 80px;
-  color: #4dac6e;
+  color: ${theme.colors.base};
 `
 
 function AboutContact() {

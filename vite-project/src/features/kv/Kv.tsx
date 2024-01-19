@@ -1,34 +1,33 @@
 import styled from "styled-components";
+import { theme } from "../../setting/style/common";
 import TitleComponent from "../../components/title/Title";
-import meImage from "../../assets/images/me.svg";
-import meImageHoverSkill from "../../assets/images/me_hover_skill.svg";
-import meImageHoverProject from "../../assets/images/me_hover_project.svg";
-import meImageHoverBlog from "../../assets/images/me_hover_blog.svg";
-import meImageBorderSkill from "../../assets/images/me_border_skill.svg";
-import meImageBorderProject from "../../assets/images/me_border_project.svg";
-import meImageBorderBlog from "../../assets/images/me_border_blog.svg";
+import meImage from "../../assets/images/kv/me.svg";
+import meImageHoverSkill from "../../assets/images/kv/me_hover_skill.svg";
+import meImageHoverProject from "../../assets/images/kv/me_hover_project.svg";
+import meImageHoverBlog from "../../assets/images/kv/me_hover_blog.svg";
+import meImageBorderSkill from "../../assets/images/kv/me_border_skill.svg";
+import meImageBorderProject from "../../assets/images/kv/me_border_project.svg";
+import meImageBorderBlog from "../../assets/images/kv/me_border_blog.svg";
 import { useState } from "react";
 
 const title = { title:'Portfolio', size: 'l', tag: 'h1', lead: 'Keisuke Sato' }
 const nav = [
   {
     text: 'Blog',
-    url: '#',
+    url: '#about-blog',
   },
   {
     text: 'Skill',
-    url: '#',
+    url: '#about-skill',
   },
   {
     text: 'Project',
-    url: '#',
+    url: '#about-project',
   },
 ]
 
 // style
 const Container = styled.div`
-  width: 980px;
-  margin: 0 auto;
   text-align: center;
 `
 const Image = styled.div`
@@ -122,8 +121,8 @@ const NavLink = styled.a`
   padding: 0 10px;
   font-size: 32px;
   line-height: 1.44;
-  color: #000;
-  font-family: 'Dela Gothic One', sans-serif;
+  color: ${theme.colors.black};
+  font-family: ${theme.fonts.DelaGothicOne};
   text-decoration: none;
   z-index: 2;
   &::before {
@@ -134,7 +133,7 @@ const NavLink = styled.a`
     bottom: 0;
     width: 100%;
     height: 14px;
-    background: #4dac6e;
+    background: ${theme.colors.base};
     z-index: -1;
     transform:scale(1, 1);
   }

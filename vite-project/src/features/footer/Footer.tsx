@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../setting/style/common";
 
 // style
 const Container = styled.div`
@@ -7,8 +8,8 @@ const Container = styled.div`
   font-size: 20px;
   line-height: 1.46;
   font-weight: bold;
-  color: #fffcbd;
-  background: #4dac6e;
+  color: ${theme.colors.soil};
+  background: ${theme.colors.base};
 `
 
 function Footer() {

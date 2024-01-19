@@ -15,10 +15,7 @@ const listItems = article.map((val, index) =>
 const moreBtn = { text:'一覧を見る', url: '#' }
 
 // style
-const Container = styled.div`
-  width: 980px;
-  margin: 0 auto;
-`
+const Container = styled.div``
 const List = styled.ul`
   margin-top: 45px;
   li:not(:last-child) {
@@ -32,7 +29,7 @@ const ButtonWrap = styled.div`
 
 function AboutBlog() {
   return (
-    <Container>
+    <Container id="about-blog">
       <Title {...title} />
       <List>
         {listItems}

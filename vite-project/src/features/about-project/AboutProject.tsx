@@ -45,10 +45,7 @@ const projects = [
 const moreBtn = { text:'一覧を見る', url: '#' }
 
 // style
-const Container = styled.div`
-  width: 980px;
-  margin: 0 auto;
-`
+const Container = styled.div``
 const List = styled.div`
   position: relative;
   margin-top: 45px;
@@ -94,7 +91,7 @@ function AboutProject() {
     setActiveIndex(swiper.activeIndex);
   };
   return (
-    <Container>
+    <Container id="about-project">
       <Title {...title} />
       <List>
         <Swiper

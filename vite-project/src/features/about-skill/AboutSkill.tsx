@@ -8,10 +8,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 const title = { title:'Skill', icon: 'frame_person' }
 
 // style
-const Container = styled.div`
-  width: 980px;
-  margin: 0 auto;
-`
+const Container = styled.div``
 const Skill = styled.div`
   width: 820px;
   margin: 45px auto 0;
@@ -58,7 +55,7 @@ const data = {
 
 function AboutSkill() {
   return (
-    <Container>
+    <Container id="about-skill">
       <TitleComponent {...title} />
       <Skill>
         <Bar data={data} options={options} />
