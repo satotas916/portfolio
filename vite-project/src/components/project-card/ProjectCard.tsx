@@ -4,7 +4,6 @@ import { theme } from "../../setting/style/common";
 // style
 const Container = styled.a`
   display: flex;
-  max-width: 912px;
   background: #fff;
   box-shadow: 12px 12px 0 0 ${theme.colors.base};
   text-decoration: none;

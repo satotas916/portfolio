@@ -10,8 +10,7 @@ const title = { title:'Skill', icon: 'frame_person' }
 // style
 const Container = styled.div``
 const Skill = styled.div`
-  width: 820px;
-  margin: 45px auto 0;
+  padding: 45px 80px 0;
 `
 
 const options = {

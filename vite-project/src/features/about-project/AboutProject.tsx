@@ -50,8 +50,7 @@ const List = styled.div`
   position: relative;
   margin-top: 45px;
   .swiper {
-    width: 820px;
-    margin: 0 auto;
+    margin: 0 80px;
     padding: 0 12px 12px 0;
   }
 `
