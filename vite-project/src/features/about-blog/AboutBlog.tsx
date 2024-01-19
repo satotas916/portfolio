@@ -1,17 +1,12 @@
+import { useEffect, useState } from "react";
+import { microcms } from "../../setting/micro-cms/cms";
+import dayjs from "dayjs";
 import styled from "styled-components";
-import Title from "../../components/title/Title";
+import Title from "../../components/title/title";
 import Button from "../../components/button/Button";
 import BlogCard from "../../components/blog-card/BlogCard";
 
 const title = { title:'Blog', icon: 'edit_square' }
-const article = [
-  { url: '#', title: 'ポートフォリオ作成日記③', date: '2023.11.02' },
-  { url: '#', title: 'ポートフォリオ作成日記②', date: '2023.11.01' },
-  { url: '#', title: 'ポートフォリオ作成日記①', date: '2023.10.29' }
-]
-const listItems = article.map((val, index) =>
-  <li key={index}><BlogCard {...val} /></li>
-);
 const moreBtn = { text:'一覧を見る', url: '#' }
 
 // style
@@ -28,6 +23,35 @@ const ButtonWrap = styled.div`
 `
 
 function AboutBlog() {
+  type dataType = {
+    id: string;
+    publishedAt: string;
+    revisedAt: string;
+    title: string;
+  }[];
+  const [data, setData] = useState<dataType>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await microcms.get({
+          endpoint: 'blogs',
+          queries: { orders: '-createdAt', limit: 3 }
+        });
+        setData(response.contents);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const article = data.map(val => { return { url: val.id, title: val.title, date: dayjs(val.publishedAt).format('YYYY.MM.DD') } })
+
+  const listItems = article.map((val, index) =>
+    <li key={index}><BlogCard {...val} /></li>
+  );
   return (
     <Container id="about-blog">
       <Title {...title} />
