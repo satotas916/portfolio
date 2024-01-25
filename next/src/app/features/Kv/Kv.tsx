@@ -49,7 +49,6 @@ const ImageWrap = styled.div`
   }
   img {
     width: 100%;
-    height: auto;
     vertical-align: bottom;
   }
 `
@@ -139,7 +138,7 @@ function Kv() {
     <Container>
       <TitleComponent {...title} />
       <ImageWrap className={hoverVal ? `is-${hoverVal}` : ''}>
-        <Image src="/images/kv/me.svg" width="167" height="446" alt="" />
+        <Image src="/images/kv/me.svg" width="167" height="446" alt="" priority={true} />
         <Nav>
           <ul>
             {nav.map((val, index) =>
