@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../setting/style/common";
+import { theme } from "@/app/setting/style/common";
 
 // style
 const Container = styled.a`
