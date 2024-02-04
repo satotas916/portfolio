@@ -47,7 +47,7 @@ function AboutBlog() {
     fetchData();
   }, []);
 
-  const article = data.map(val => { return { url: val.id, title: val.title, date: dayjs(val.publishedAt).format('YYYY.MM.DD') } })
+  const article = data.map(val => { return { url: { pathname: '/blog', query: { id: val.id } }, title: val.title, date: dayjs(val.publishedAt).format('YYYY.MM.DD') } })
 
   const listItems = article.map((val, index) =>
     <li key={index}><BlogCard {...val} /></li>

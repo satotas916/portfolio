@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { theme } from "@/app/setting/style/common";
+import Link from "next/link";
 
 // style
 const Container = styled.a`
@@ -27,9 +28,9 @@ const Title = styled.p`
   text-overflow: ellipsis;
 `
 
-function BlogCard(props: { url: string; title: string; date: string; }) {
+function BlogCard(props: { url: { pathname: string; query: { id: string }; }; title: string; date: string; }) {
   return (
-    <Container href={props.url}>
+    <Container as={Link} href={props.url}>
       <Date>{props.date}</Date>
       <Title>{props.title}</Title>
     </Container>
