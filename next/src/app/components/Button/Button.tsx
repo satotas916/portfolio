@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { theme } from "@/app/setting/style/common";
+import Link from "next/link";
 
 // style
 const Container = styled.a`
@@ -33,9 +34,9 @@ const Container = styled.a`
   }
 `
 
-function Button(props: { text: string; url: string; }) {
+function Button(props: { text: string; url: string; keyVal?: string; }) {
   return (
-    <Container href={props.url}>
+    <Container as={props.keyVal ? Link : 'a'} key={props.keyVal} href={props.url}>
       {props.text}
     </Container>
   )

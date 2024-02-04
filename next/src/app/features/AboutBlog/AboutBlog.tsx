@@ -7,7 +7,7 @@ import Button from "@/app/components/Button/Button";
 import BlogCard from "@/app/components/BlogCard/BlogCard";
 
 const title = { title:'Blog', icon: 'edit_square' }
-const moreBtn = { text:'一覧を見る', url: '#' }
+const moreBtn = { text:'一覧を見る', url: '/blog', keyVal: 'about-blog', tag: 'Link' }
 
 // style
 const Container = styled.div``
