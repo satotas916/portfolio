@@ -1,6 +1,7 @@
 import { ElementType } from "react";
 import styled from "styled-components";
 import { theme } from "@/app/setting/style/common";
+import { DelaGothicOne } from "@/app/utils/fonts";
 
 // style
 const Container = styled.div`
@@ -12,7 +13,6 @@ const Lead = styled.span<{ size: string }>`
   margin: ${props => props.size === 'm' ? '0 20px' : '0 30px'};
   font-size: 32px;
   color: ${theme.colors.black};
-  font-family: ${theme.fonts.DelaGothicOne};
   font-weight: bold;
 `
 const TextWrap = styled.div<{ size: string }>`
@@ -20,7 +20,6 @@ const TextWrap = styled.div<{ size: string }>`
   position: relative;
   padding: ${props => props.size === 'm' ? '0 20px' : '0 30px'};
   color: ${theme.colors.black};
-  font-family: ${theme.fonts.DelaGothicOne};
   font-weight: bold;
   &::before {
     position: absolute;
@@ -49,8 +48,8 @@ function Title(props: { title: string; size?: string; tag?: string; lead?: strin
   const size = props.size ? props.size : 'm'
   return (
     <Container>
-      {props.lead && <Lead size ={size}>{props.lead}</Lead>}
-      <TextWrap size={size}>
+      {props.lead && <Lead size ={size} className={DelaGothicOne.className}>{props.lead}</Lead>}
+      <TextWrap size={size} className={DelaGothicOne.className}>
         <Text as={tagElement} size={size}>
           {props.icon && <Icon className="material-symbols-outlined" size ={size}>{props.icon}</Icon>}
           {props.title}

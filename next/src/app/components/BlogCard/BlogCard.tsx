@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { theme } from "@/app/setting/style/common";
 import Link from "next/link";
+import { DelaGothicOne } from "@/app/utils/fonts";
 
 // style
 const Container = styled.a`
@@ -16,7 +17,6 @@ const Date = styled.span`
   font-size: 18px;
   line-height: 1.46;
   color: ${theme.colors.base};
-  font-family: ${theme.fonts.DelaGothicOne};
 `
 const Title = styled.p`
   font-size: 24px;
@@ -31,7 +31,7 @@ const Title = styled.p`
 function BlogCard(props: { url: { pathname: string; query: { id: string }; }; title: string; date: string; }) {
   return (
     <Container as={Link} href={props.url}>
-      <Date>{props.date}</Date>
+      <Date className={DelaGothicOne.className}>{props.date}</Date>
       <Title>{props.title}</Title>
     </Container>
   )

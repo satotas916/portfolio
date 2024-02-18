@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { theme } from "@/app/setting/style/common"
 import TitleComponent from "@/app/components/Title/Title"
 import { useState } from "react"
+import { DelaGothicOne } from '@/app/utils/fonts'
 
 const title = { title:'Portfolio', size: 'l', tag: 'h1', lead: 'Keisuke Sato' }
 const nav = [
@@ -115,7 +116,6 @@ const NavLink = styled.a`
   font-size: 32px;
   line-height: 1.44;
   color: ${theme.colors.black};
-  font-family: ${theme.fonts.DelaGothicOne};
   text-decoration: none;
   z-index: 2;
   &::before {
@@ -148,7 +148,7 @@ function Kv() {
                 onMouseEnter={() => setHover(val.text.toLowerCase())}
                 onMouseLeave={() => setHover('')}
               >
-                <NavLink href={val.url}>{val.text}</NavLink>
+                <NavLink href={val.url} className={DelaGothicOne.className}>{val.text}</NavLink>
               </NavItem>
             )}
           </ul>
