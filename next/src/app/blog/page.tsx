@@ -41,23 +41,34 @@ const FooterWrap = styled.div`
 
 
 export default function BlogList() {
-  const [data, setData] = useState<ApiBlogType>();
+  const [data, setData] = useState<ApiBlogType>()
+  const [loading, setLoading] = useState<boolean>(true)
   const queryId = useSearchParams().get('id')
   useEffect(() => {
     const fetchData = async () => {
       const res = await getApi({ endpoint: 'blogs', contentId: queryId ? queryId : ''})
-      if(res) setData(res)
+      if(res) {
+        setData(res)
+        setLoading(false)
+      }
     }
     fetchData();
   });
+
+  const ContentsTag = loading ?
+    <p>Now Loading...</p> :
+    <>
+      <BlogDate>{dayjs(data?.publishedAt).format('YYYY.MM.DD')}</BlogDate>
+      <BlogTitle>{data?.title}</BlogTitle>
+      <div className='p-article' dangerouslySetInnerHTML={{ __html: `${data?.content}` }} />
+    </>
+
   return (
     <>
       <Container>
         <Title {...title} />
         <Contents>
-          <BlogDate>{dayjs(data?.publishedAt).format('YYYY.MM.DD')}</BlogDate>
-          <BlogTitle>{data?.title}</BlogTitle>
-          <div className='p-article' dangerouslySetInnerHTML={{ __html: `${data?.content}` }} />
+          {ContentsTag}
         </Contents>
       </Container>
       <FooterWrap>

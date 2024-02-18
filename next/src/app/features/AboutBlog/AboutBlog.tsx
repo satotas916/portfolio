@@ -30,12 +30,16 @@ const ButtonWrap = styled.div`
 `
 
 function AboutBlog() {
-  const [data, setData] = useState<ApiBlogType[]>([]);
+  const [data, setData] = useState<ApiBlogType[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await getApi({ endpoint: 'blogs', queries: { orders: '-createdAt', limit: 3 }})
-      if(res.contents) setData(res.contents)
+      if(res.contents) {
+        setData(res.contents)
+        setLoading(false)
+      }
     }
     fetchData()
   }, []);
@@ -46,12 +50,14 @@ function AboutBlog() {
     date: dayjs(val.publishedAt).format('YYYY.MM.DD')
   } })
 
+  const ListTag = loading ?
+    <p>Now Loading...</p> :
+    <List>{article.map((val, index) => <li key={index}><BlogCard {...val} /></li>)}</List>
+
   return (
     <Container id="about-blog">
       <Title {...title} />
-      <List>
-        {article.map((val, index) => <li key={index}><BlogCard {...val} /></li>)}
-      </List>
+      {ListTag}
       <ButtonWrap>
         <Button {...moreBtn} />
       </ButtonWrap>
