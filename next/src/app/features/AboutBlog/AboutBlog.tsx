@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react";
-import { microcms } from "@/app/setting/micro-cms/cms";
+import { ApiBlogType } from "@/app/types/api";
+import { getApi } from "@/app/utils/api";
 import dayjs from "dayjs";
 import styled from "styled-components";
 import Title from "@/app/components/Title/Title";
 import Button from "@/app/components/Button/Button";
 import BlogCard from "@/app/components/BlogCard/BlogCard";
+
+export interface BlogType {
+  url: { pathname: string; query: { id: string } };
+  title: string;
+  date: string;
+}
 
 const title = { title:'Blog', icon: 'edit_square' }
 const moreBtn = { text:'一覧を見る', url: '/blog', keyVal: 'about-blog', tag: 'Link' }
@@ -23,40 +30,27 @@ const ButtonWrap = styled.div`
 `
 
 function AboutBlog() {
-  type dataType = {
-    id: string;
-    publishedAt: string;
-    revisedAt: string;
-    title: string;
-  }[];
-  const [data, setData] = useState<dataType>([]);
+  const [data, setData] = useState<ApiBlogType[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await microcms.get({
-          endpoint: 'blogs',
-          queries: { orders: '-createdAt', limit: 3 }
-        });
-        setData(response.contents);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
+      const res = await getApi({ endpoint: 'blogs', queries: { orders: '-createdAt', limit: 3 }})
+      if(res.contents) setData(res.contents)
+    }
+    fetchData()
   }, []);
 
-  const article = data.map(val => { return { url: { pathname: '/blog', query: { id: val.id } }, title: val.title, date: dayjs(val.publishedAt).format('YYYY.MM.DD') } })
+  const article: BlogType[] = data.map(val => { return {
+    url: { pathname: '/blog', query: { id: val.id } },
+    title: val.title,
+    date: dayjs(val.publishedAt).format('YYYY.MM.DD')
+  } })
 
-  const listItems = article.map((val, index) =>
-    <li key={index}><BlogCard {...val} /></li>
-  );
   return (
     <Container id="about-blog">
       <Title {...title} />
       <List>
-        {listItems}
+        {article.map((val, index) => <li key={index}><BlogCard {...val} /></li>)}
       </List>
       <ButtonWrap>
         <Button {...moreBtn} />

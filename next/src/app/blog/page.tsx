@@ -5,9 +5,10 @@ import '@/app/assets/scss/common.scss'
 import Title from '@/app/components/Title/Title'
 import Footer from '@/app/features/Footer/Footer'
 import { useEffect, useState } from "react";
-import { microcms } from "@/app/setting/micro-cms/cms";
 import { useSearchParams } from 'next/navigation';
 import dayjs from 'dayjs';
+import { ApiBlogType } from '@/app/types/api';
+import { getApi } from '@/app/utils/api';
 
 const title = { title:'Blog', icon: 'edit_square' }
 
@@ -41,41 +42,23 @@ const FooterWrap = styled.div`
 
 
 export default function BlogList() {
-  type dataType = {
-    category: { id: string; createdAt: string; updatedAt: string; publishedAt: string; revisedAt: string; name: string; }
-    content: string;
-    createdAt: string;
-    eyecatch: {url: string, height: number, width: number};
-    id: string;
-    publishedAt: string;
-    revisedAt: string;
-    title: string;
-    updatedAt:string;
-  };
-  const [data, setData] = useState<dataType>([]);
+  const [data, setData] = useState<ApiBlogType>();
   const queryId = useSearchParams().get('id')
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await microcms.get({ endpoint: 'blogs', contentId: queryId ? queryId : '' });
-        console.log('response.contents');
-        console.log(response);
-        setData(response);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
+      const res = await getApi({ endpoint: 'blogs', contentId: queryId ? queryId : ''})
+      if(res) setData(res)
+    }
     fetchData();
-  }, []);
+  });
   return (
     <>
       <Container>
         <Title {...title} />
         <Contents>
-          <BlogDate>{dayjs(data.publishedAt).format('YYYY.MM.DD')}</BlogDate>
-          <BlogTitle>{data.title}</BlogTitle>
-          <div className='p-article' dangerouslySetInnerHTML={{ __html: `${data.content}` }} />
+          <BlogDate>{dayjs(data?.publishedAt).format('YYYY.MM.DD')}</BlogDate>
+          <BlogTitle>{data?.title}</BlogTitle>
+          <div className='p-article' dangerouslySetInnerHTML={{ __html: `${data?.content}` }} />
         </Contents>
       </Container>
       <FooterWrap>
