@@ -1,6 +1,5 @@
 'use client'
 import styled from 'styled-components'
-import '@/app/assets/scss/common.scss'
 import Kv from '@/app/features/Kv/Kv'
 import AboutSkill from '@/app/features/AboutSkill/AboutSkill'
 import AboutProject from '@/app/features/AboutProject/AboutProject'

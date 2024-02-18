@@ -1,7 +1,6 @@
 'use client'
 import styled from 'styled-components'
 import { theme } from "@/app/setting/style/common";
-import '@/app/assets/scss/common.scss'
 import Title from '@/app/components/Title/Title'
 import Footer from '@/app/features/Footer/Footer'
 import { useEffect, useState } from "react";
