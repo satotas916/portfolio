@@ -20,7 +20,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    url: '#',
+    url: {
+      pathname: '#',
+      query: { id: '' }
+    },
     title: 'ポートフォリオ作成日記③',
     date: '2023.11.02'
   },
