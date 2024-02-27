@@ -1,7 +1,9 @@
+@use './font' as var;
 @use './color' as color;
 
 body {
   min-width: 1280px;
+  font-family: var.$ff-noto-sans-jp;
   background: color.$color-soil;
   -webkit-font-smoothing: antialiased;
 }

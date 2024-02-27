@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { NotoSansJp } from "./utils/fonts";
 import '@/app/assets/scss/common.scss'
 import StyledComponentsRegistry from "@/app/lib/registry";
 
@@ -11,7 +10,7 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ja">
-      <body className={`${NotoSansJp.className}`}>
+      <body>
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
     </html>
