@@ -45,7 +45,7 @@ function AboutBlog() {
   }, []);
 
   const article: BlogType[] = data.map(val => { return {
-    url: { pathname: '/blog', query: { id: val.id } },
+    url: { pathname: '/blog/detail', query: { id: val.id } },
     title: val.title,
     date: dayjs(val.publishedAt).format('YYYY.MM.DD')
   } })

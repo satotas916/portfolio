@@ -1,10 +1,13 @@
 'use client'
 import styled from 'styled-components'
-import { theme } from "@/app/setting/style/common";
 import Title from '@/app/components/Title/Title'
 import Footer from '@/app/features/Footer/Footer'
-import { Suspense } from "react";
-import BlogContents from '@/app/features/BlogContents/BlogContents';
+import { Suspense, useEffect, useState } from "react";
+import { ApiBlogType } from '../types/api';
+import { getApi } from '../utils/api';
+import { BlogType } from '../features/AboutBlog/AboutBlog';
+import dayjs from 'dayjs';
+import BlogCard from '../components/BlogCard/BlogCard';
 
 const title = { title:'Blog', icon: 'edit_square' }
 
@@ -14,10 +17,11 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 120px 0 0;
 `
-const Contents = styled.div`
-  margin-top: 40px;
-  padding: 60px;
-  background: ${theme.colors.white};
+const List = styled.ul`
+  margin-top: 45px;
+  li:not(:last-child) {
+    margin-bottom: 30px;
+  }
 `
 const FooterWrap = styled.div`
   padding: 100px 0 0;
@@ -25,16 +29,36 @@ const FooterWrap = styled.div`
 
 
 export default function BlogList() {
+  const [data, setData] = useState<ApiBlogType[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getApi({ endpoint: 'blogs', queries: { orders: '-createdAt' }})
+      if(res.contents) {
+        setData(res.contents)
+        setLoading(false)
+      }
+    }
+    fetchData()
+  }, []);
+
+  const article: BlogType[] = data.map(val => { return {
+    url: { pathname: '/blog/detail', query: { id: val.id } },
+    title: val.title,
+    date: dayjs(val.publishedAt).format('YYYY.MM.DD')
+  } })
+
+  const ListTag = loading ?
+    <p>Now Loading...</p> :
+    <List>{article.map((val, index) => <li key={index}><BlogCard {...val} /></li>)}</List>
+
   return (
     <>
       <Suspense>
         <Container>
           <Title {...title} />
-          <Contents>
-            <Suspense>
-              <BlogContents />
-            </Suspense>
-          </Contents>
+          {ListTag}
         </Container>
         <FooterWrap>
           <Footer />
