@@ -1,3 +1,15 @@
+# ポートフォリオサイト
+
+## 概要
+- [サイト](https://portfolio-satotas916.vercel.app/)
+- [Github](https://github.com/satotas916/portfolio)
+- [figuma](https://www.figma.com/file/6wg4hFGkesTtHW1zqZfS3d/portfolio?type=design&node-id=0%3A1&mode=design&t=w92yIYwBchy9pDH1-1)
+## 環境
+- 使用言語：Next.js
+- サーバー：vercel
+- API：microCMS
+
+## Next.js
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
