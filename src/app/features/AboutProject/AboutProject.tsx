@@ -1,7 +1,8 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { getApi } from "@/app/utils/api";
+import { ApiProjectType } from "@/app/types/api";
 import Title from "@/app/components/Title/Title";
-import Button from "@/app/components/Button/Button";
 import ProjectCard from "@/app/components/ProjectCard/ProjectCard";
 
 // swiper
@@ -12,37 +13,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCreative } from "swiper/modules";
 import SwiperType from "swiper";
 
+export interface ProjectType {
+  url: string;
+  title: string;
+  image: string;
+  text?: string;
+}
 
 const title = { title:'Project', icon: 'terminal' }
-const projects = [
-  {
-    url: '#',
-    image: 'https://placehold.jp/460x365.png',
-    title: 'ポートフォリオサイト1',
-    text: `こちらのポートフォリオサイトの詳細になります。`,
-    date: 10,
-    time: 20
-  },
-  {
-    url: '#',
-    image: 'https://placehold.jp/460x365.png',
-    title: 'ポートフォリオサイト2',
-    text: `こちらのポートフォリオサイトの詳細になります。
-    ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト.ダミーテキスト.ダミーテキスト.ダミーテキスト.ダミーテキスト.ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト.ダミーテキスト.ダミーテキスト.ダミーテキスト.ダミーテキスト.`,
-    date: 10,
-    time: 20
-  },
-  {
-    url: '#',
-    image: 'https://placehold.jp/460x365.png',
-    title: 'ポートフォリオサイト3',
-    text: `こちらのポートフォリオサイトの詳細になります。
-    ダミーテキストダミーテキスト`,
-    date: 10,
-    time: 20
-  }
-]
-const moreBtn = { text:'一覧を見る', url: '#' }
 
 // style
 const Container = styled.div``
@@ -78,13 +56,33 @@ const ButtonWrap = styled.div`
   text-align: right;
 `
 
-const listItems = projects.map((val, index) =>
-  <SwiperSlide key={index}><ProjectCard {...val} /></SwiperSlide>
-);
-
 function AboutProject() {
   const swiperRef: React.MutableRefObject<SwiperType | undefined> = useRef();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [data, setData] = useState<ApiProjectType[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getApi({ endpoint: 'project', queries: { limit: 3 }})
+      if(res.contents) {
+        setData(res.contents)
+        setLoading(false)
+      }
+    }
+    fetchData()
+  }, []);
+
+  const projects: ProjectType[] = data.map(val => { return {
+    url: `/project/detail?id=${val.id}`,
+    title: val.title,
+    image: val.kv.url,
+    text: val.contents,
+  } })
+
+  const listItems = loading ?
+    <p>Now Loading...</p> :
+    <>{projects.map((val, index) =><><SwiperSlide key={index}><ProjectCard {...val} /></SwiperSlide></>)}</>
 
   const updateActiveIndex = (swiper: SwiperType) => {
     setActiveIndex(swiper.activeIndex);
@@ -120,9 +118,6 @@ function AboutProject() {
           arrow_circle_right
         </Next>
       </List>
-      <ButtonWrap>
-        <Button {...moreBtn} />
-      </ButtonWrap>
     </Container>
   )
 }

@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import dayjs from 'dayjs';
 import { ApiBlogType } from '@/app/types/api';
 import { getApi } from '@/app/utils/api';
+import ArticleContents from '../ArticleContents/ArticleContents';
 
 // style
 const BlogDate = styled.span`
@@ -43,7 +44,7 @@ export default function BlogContents() {
     <>
       <BlogDate>{dayjs(data?.publishedAt).format('YYYY.MM.DD')}</BlogDate>
       <BlogTitle>{data?.title}</BlogTitle>
-      <div className='p-article' dangerouslySetInnerHTML={{ __html: `${data?.content}` }} />
+      <ArticleContents contents={data!.content} />
     </>
 
   return (

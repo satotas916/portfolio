@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import { theme } from "@/app/setting/style/common";
+import { ProjectType } from "@/app/features/AboutProject/AboutProject";
+import ArticleContents from "@/app/features/ArticleContents/ArticleContents";
+import { Suspense } from "react";
 
 // style
 const Container = styled.a`
@@ -9,7 +12,7 @@ const Container = styled.a`
   text-decoration: none;
   overflow: hidden;
 `
-const Image = styled.div`
+const ImageWrap = styled.div`
   flex-shrink: 0;
   width: 50.4%;
   img {
@@ -42,31 +45,22 @@ const Text = styled.div`
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 6;
 `
-const Details = styled.div`
-  margin-top: 24px;
-  font-size: 16px;
-  line-height: 1.43;
-  color: ${theme.colors.black};
-  span {
-    display: block;
-  }
-`
 
-function ProjectCard(props: { url: string; image: string; title: string; text: string; date: number; time: number; }) {
+function ProjectCard(props: ProjectType) {
+  const article = props.text ?
+    <Text><ArticleContents contents={props.text} /></Text> :
+    <></>
+
   return (
     <Container href={props.url}>
-      <Image>
+      <ImageWrap>
         <img src={props.image} alt="" />
-      </Image>
+      </ImageWrap>
       <Wrap>
         <Title>{props.title}</Title>
-        <Text>
-          <p>{props.text}</p>
-        </Text>
-        <Details>
-          <span>制作期間：{props.date}日</span>
-          <span>作業時間：{props.time}時間</span>
-        </Details>
+        <Suspense>
+          {article}
+        </Suspense>
       </Wrap>
     </Container>
   )

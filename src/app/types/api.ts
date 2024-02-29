@@ -20,3 +20,19 @@ export interface ApiBlogType {
   title: string;
   updatedAt: string;
 }
+
+export interface ApiProjectType {
+  contents: string;
+  createdAt: string;
+  id: string;
+  kv: {
+    height: number;
+    url: string;
+    width: number;
+  }
+  publishedAt: string;
+  revisedAt: string;
+  title: string;
+  updatedAt: string;
+  url: string;
+}
