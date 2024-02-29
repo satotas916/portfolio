@@ -35,11 +35,16 @@ const Emphasis = styled.span`
     transform: rotate(-45deg);
   }
 `
-const Icon = styled.span`
+const Icon = styled.a`
   display: inline-block;
   margin-top: 16px;
   font-size: 80px;
   color: ${theme.colors.base};
+  text-decoration: none;
+  transition: transform 0.2s ease;
+  &:hover {
+    transform: translateY(-4px);
+  }
 `
 
 function AboutContact() {
@@ -47,7 +52,7 @@ function AboutContact() {
     <Container>
       <Title {...title} />
       <Emphasis />
-      <Icon className="material-symbols-outlined">mail</Icon>
+      <Icon className="material-symbols-outlined" href="mailto:satotas916@gmail.com">mail</Icon>
     </Container>
   )
 }

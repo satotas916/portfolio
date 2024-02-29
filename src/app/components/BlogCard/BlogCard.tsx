@@ -10,6 +10,11 @@ const Container = styled.a`
   background: #fff;
   box-shadow: 12px 12px 0 0 ${theme.colors.base};
   text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  &:hover {
+    transform: translate(6px, 6px);
+    box-shadow: 6px 6px 0 0 ${theme.colors.base};
+  }
 `
 const Date = styled.span`
   display: block;

@@ -11,6 +11,11 @@ const Container = styled.a`
   box-shadow: 12px 12px 0 0 ${theme.colors.base};
   text-decoration: none;
   overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  &:hover {
+    transform: translate(6px, 6px);
+    box-shadow: 6px 6px 0 0 ${theme.colors.base};
+  }
 `
 const ImageWrap = styled.div`
   flex-shrink: 0;
@@ -52,7 +57,7 @@ function ProjectCard(props: ProjectType) {
     <></>
 
   return (
-    <Container href={props.url}>
+    <Container href={props.url} target="_blank">
       <ImageWrap>
         <img src={props.image} alt="" />
       </ImageWrap>

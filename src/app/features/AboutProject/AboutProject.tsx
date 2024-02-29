@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { theme } from "@/app/setting/style/common";
 import styled from "styled-components";
 import { getApi } from "@/app/utils/api";
 import { ApiProjectType } from "@/app/types/api";
@@ -37,19 +38,31 @@ const navigation = styled.button`
   top: 50%;
   transform: translateY(-50%);
   font-size: 64px;
-  color: #1c1b1f;
+  color: ${theme.colors.base};
   font-weight: 200;
   z-index: 100;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, right 0.2s ease, left 0.2s ease;
   &:disabled {
-    opacity: 0.5;
+    opacity: 0.3;
   }
 `
 const Next = styled(navigation)`
   right: 0;
+  &:hover {
+    right: -6px;
+  }
+  &:disabled {
+    right: 0;
+  }
 `
 const Prev = styled(navigation)`
   left: 0;
+  &:hover {
+    left: -6px;
+  }
+  &:disabled {
+    left: 0;
+  }
 `
 const ButtonWrap = styled.div`
   margin-top: 40px;
@@ -74,7 +87,7 @@ function AboutProject() {
   }, []);
 
   const projects: ProjectType[] = data.map(val => { return {
-    url: `/project/detail?id=${val.id}`,
+    url: val.url,
     title: val.title,
     image: val.kv.url,
     text: val.contents,
